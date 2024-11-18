@@ -1,88 +1,60 @@
-// Snake Game Code
-let snake, food, score, gameInterval;
-
-function startSnakeGame() {
-  const canvas = document.getElementById('snakeGame');
-  const ctx = canvas.getContext('2d');
-  const canvasSize = 300;
-  const scale = 10;
-  const totalCells = canvasSize / scale;
-
-  snake = [{ x: 5, y: 5 }];
-  food = { x: Math.floor(Math.random() * totalCells), y: Math.floor(Math.random() * totalCells) };
-  score = 0;
-
-  document.addEventListener('keydown', changeDirection);
-  gameInterval = setInterval(updateGame, 100);
-
-  function updateGame() {
-    moveSnake();
-    if (checkCollision()) {
-      clearInterval(gameInterval);
-      alert('Game Over! Your score: ' + score);
-      return;
+// Particle.js config
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 80
+    },
+    "color": {
+      "value": "#00CFFF"
+    },
+    "shape": {
+      "type": "circle"
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": true
+    },
+    "size": {
+      "value": 5,
+      "random": true
+    },
+    "move": {
+      "enable": true,
+      "speed": 2
     }
-
-    if (snake[0].x === food.x && snake[0].y === food.y) {
-      score++;
-      food = { x: Math.floor(Math.random() * totalCells), y: Math.floor(Math.random() * totalCells) };
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "repulse"
+      }
     }
-
-    drawCanvas();
   }
+});
 
-  function moveSnake() {
-    const head = { ...snake[0] };
-
-    if (direction === 'LEFT') head.x--;
-    if (direction === 'RIGHT') head.x++;
-    if (direction === 'UP') head.y--;
-    if (direction === 'DOWN') head.y++;
-
-    snake.unshift(head);
-    snake.pop();
-  }
-
-  function drawCanvas() {
-    ctx.clearRect(0, 0, canvasSize, canvasSize);
-    ctx.fillStyle = 'lime';
-    snake.forEach(part => ctx.fillRect(part.x * scale, part.y * scale, scale, scale));
-    ctx.fillStyle = 'red';
-    ctx.fillRect(food.x * scale, food.y * scale, scale, scale);
-  }
-
-  function checkCollision() {
-    const head = snake[0];
-    if (head.x < 0 || head.x >= totalCells || head.y < 0 || head.y >= totalCells) return true;
-    for (let i = 1; i < snake.length; i++) {
-      if (head.x === snake[i].x && head.y === snake[i].y) return true;
-    }
-    return false;
-  }
-
-  let direction = 'RIGHT';
-  function changeDirection(event) {
-    if (event.key === 'ArrowUp' && direction !== 'DOWN') direction = 'UP';
-    if (event.key === 'ArrowDown' && direction !== 'UP') direction = 'DOWN';
-    if (event.key === 'ArrowLeft' && direction !== 'RIGHT') direction = 'LEFT';
-    if (event.key === 'ArrowRight' && direction !== 'LEFT') direction = 'RIGHT';
-  }
+// Dark mode toggle
+function toggleTheme() {
+  const body = document.body;
+  body.classList.toggle("dark-mode");
 }
 
-// Weather Widget (using OpenWeather API)
-const apiKey = 'your-api-key'; // Replace with your own OpenWeather API key
-const weatherContainer = document.getElementById('weather-info');
-
+// Weather Widget
 async function getWeather() {
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&appid=${apiKey}&units=metric`);
+  const weatherContainer = document.getElementById("weather-info");
+  const apiKey = "your-api-key";
+  const city = "Cape Town";
+  
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
   const data = await response.json();
-
-  if (data.cod === 200) {
+  
+  if (data.weather) {
     const weatherInfo = `
-      <p><strong>${data.name}</strong> - ${data.weather[0].description}</p>
-      <p><strong>Temperature:</strong> ${data.main.temp}°C</p>
-      <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
-      <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+      <h3>${city}</h3>
+      <p>${data.weather[0].description}</p>
+      <p>Temperature: ${data.main.temp}°C</p>
+      <p>Humidity: ${data.main.humidity}%</p>
     `;
     weatherContainer.innerHTML = weatherInfo;
   } else {
@@ -91,3 +63,44 @@ async function getWeather() {
 }
 
 getWeather();
+
+// Snake Game
+let canvas = document.getElementById('snakeGame');
+let ctx = canvas.getContext("2d");
+
+let snake = [{ x: 10, y: 10 }];
+let direction = "right";
+let gameInterval;
+
+function startSnakeGame() {
+  clearInterval(gameInterval);
+  snake = [{ x: 10, y: 10 }];
+  direction = "right";
+  gameInterval = setInterval(drawSnakeGame, 100);
+}
+
+function drawSnakeGame() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  snake.forEach((segment, index) => {
+    ctx.fillStyle = index === 0 ? "#FF4C00" : "#00CFFF";
+    ctx.fillRect(segment.x * 10, segment.y * 10, 10, 10);
+  });
+
+  let head = snake[0];
+  let newHead;
+  
+  if (direction === "right") newHead = { x: head.x + 1, y: head.y };
+  if (direction === "left") newHead = { x: head.x - 1, y: head.y };
+  if (direction === "up") newHead = { x: head.x, y: head.y - 1 };
+  if (direction === "down") newHead = { x: head.x, y: head.y + 1 };
+  
+  snake.unshift(newHead);
+  snake.pop();
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowUp" && direction !== "down") direction = "up";
+  if (e.key === "ArrowDown" && direction !== "up") direction = "down";
+  if (e.key === "ArrowLeft" && direction !== "right") direction = "left";
+  if (e.key === "ArrowRight" && direction !== "left") direction = "right";
+});
