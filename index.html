@@ -8,15 +8,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script> <!-- Particle.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5.js"></script> <!-- Audio Visualizer -->
 </head>
 <body>
   <!-- Main Header with Branding -->
   <header>
-    <div class="logo">
+    <div class="logo" id="logo">
       <span class="logo-text">Polme</span>
       <span class="logo-highlight">Elo</span>
     </div>
     <button class="theme-toggle" onclick="toggleTheme()">🌙</button> <!-- Dark Mode Toggle -->
+    <div class="slogan">Polme n Rome Elo Aviva</div>
   </header>
 
   <!-- Particle Background -->
@@ -31,49 +33,28 @@
     <div class="spotify-player">
       <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
+    <div id="visualizer-container" class="visualizer-container">
+      <canvas id="visualizer"></canvas>
+    </div>
   </section>
 
-  <!-- Snake Game Section -->
-  <section id="game" class="game">
+  <!-- Scroll Parallax Section -->
+  <section id="parallax-section" class="parallax-section">
+    <h2>Welcome to the Future</h2>
+    <p>Scroll to explore our features</p>
+  </section>
+
+  <!-- Interactive Form Section -->
+  <section id="contact" class="contact">
     <div class="section-header">
-      <h2>Play the Snake Game!</h2>
-      <p>Test your skills in a classic game.</p>
+      <h2>Get in Touch</h2>
+      <p>Leave us a message and let's connect!</p>
     </div>
-    <div class="game-container">
-      <canvas id="snakeGame" width="300" height="300"></canvas>
-      <button onclick="startSnakeGame()" class="cta-button">Start Game</button>
-    </div>
-  </section>
-
-  <!-- Weather Widget Section -->
-  <section id="weather" class="weather">
-    <div class="section-header">
-      <h2>Current Weather</h2>
-      <p>Get the latest weather updates from Cape Town.</p>
-    </div>
-    <div class="weather-container">
-      <div id="weather-info">
-        <!-- Weather info will be injected here -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Instagram Feed Section -->
-  <section id="instagram" class="instagram">
-    <div class="section-header">
-      <h2>Live Instagram Feed</h2>
-      <p>Stay connected with Polme Elo on Instagram!</p>
-    </div>
-    <div id="instaFeed" class="insta-feed">
-      <!-- Instagram posts will go here -->
-    </div>
-  </section>
-
-  <!-- 3D Logo Effect -->
-  <section id="interactive-logo" class="interactive-logo">
-    <div class="logo-3d-container">
-      <h2>Polme Elo</h2>
-    </div>
+    <form id="contact-form">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <script src="script.js"></script>
