@@ -1,0 +1,165 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background: #1e3c72;
+  position: relative;
+}
+
+.header-content {
+  z-index: 10;
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 10px;
+  animation: fadeIn 1s ease-out;
+}
+
+.header .tagline {
+  font-size: 1.5rem;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background: #FF4C00;
+  color: #fff;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  animation: bounceIn 2s ease-in-out infinite;
+}
+
+.cta-button:hover {
+  background: #FF5F00;
+}
+
+/* Features Section */
+.features {
+  background: #111;
+  padding: 50px 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  color: #FF4C00;
+  margin-bottom: 20px;
+}
+
+.features p {
+  font-size: 1.1rem;
+  color: #bbb;
+  margin-bottom: 40px;
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: #222;
+  padding: 30px;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+  font-size: 1.8rem;
+  color: #FF4C00;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #bbb;
+}
+
+/* Footer */
+.footer {
+  background: #222;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content p {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.social-links {
+  margin-top: 10px;
+}
+
+.social-links a {
+  color: #bbb;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.social-links a:hover {
+  color: #FF4C00;
+  transition: color 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
