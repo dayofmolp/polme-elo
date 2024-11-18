@@ -3,51 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Polme Elo - A stylish portfolio">
+  <meta name="description" content="Polme Elo - Interactive web experiences with music, games, and more">
   <title>Polme Elo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <div class="header-content">
-      <h1>Polme Elo</h1>
-      <p class="tagline">Innovating digital experiences with style</p>
-      <button class="cta-button" onclick="scrollToSection('features')">Discover More</button>
+  <!-- Main Header with Branding -->
+  <header>
+    <div class="logo">
+      <span class="logo-text">Polme</span>
+      <span class="logo-highlight">Elo</span>
     </div>
   </header>
 
-  <section id="features" class="features">
+  <!-- Spotify Embed Section -->
+  <section id="spotify" class="spotify">
     <div class="section-header">
-      <h2>Features</h2>
-      <p>Some of the coolest features I've integrated in this website</p>
+      <h2>My Favorite Tunes</h2>
+      <p>Enjoy some music while you browse!</p>
     </div>
-    <div class="feature-cards">
-      <div class="card">
-        <h3>Interactive Animations</h3>
-        <p>Engaging effects powered by smooth CSS transitions.</p>
-      </div>
-      <div class="card">
-        <h3>API-Powered</h3>
-        <p>Dynamic content fetched in real-time from APIs.</p>
-      </div>
-      <div class="card">
-        <h3>Responsive Design</h3>
-        <p>Optimized for every device size, from mobile to desktop.</p>
-      </div>
+    <div class="spotify-player">
+      <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2024 Polme Elo | All rights reserved</p>
-      <div class="social-links">
-        <a href="https://twitter.com" target="_blank">Twitter</a>
-        <a href="https://github.com" target="_blank">GitHub</a>
-        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+  <!-- Snake Game Section -->
+  <section id="game" class="game">
+    <div class="section-header">
+      <h2>Play the Snake Game!</h2>
+      <p>Test your skills in a classic game.</p>
+    </div>
+    <div class="game-container">
+      <canvas id="snakeGame" width="300" height="300"></canvas>
+      <button onclick="startSnakeGame()" class="cta-button">Start Game</button>
+    </div>
+  </section>
+
+  <!-- Weather Widget Section -->
+  <section id="weather" class="weather">
+    <div class="section-header">
+      <h2>Current Weather</h2>
+      <p>Get the latest weather updates from Cape Town.</p>
+    </div>
+    <div class="weather-container">
+      <div id="weather-info">
+        <!-- Weather info will be injected here -->
       </div>
     </div>
-  </footer>
+  </section>
 
   <script src="script.js"></script>
 </body>
