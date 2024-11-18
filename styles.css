@@ -1,165 +1,145 @@
-/* General Styles */
+/* Global Styles */
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background: #111;
-  color: white;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  background: #f4f4f4;
+  color: #333;
 }
 
 header {
-  padding: 20px 0;
-  background: #111;
-  text-align: center;
-  position: relative;
-}
-
-.logo {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #FF4C00;
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-}
-
-.logo-text {
-  color: #FF4C00;
-  display: inline-block;
-}
-
-.logo-highlight {
-  color: #00CFFF;
-}
-
-button.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #FF4C00;
-}
-
-.slogan {
-  font-size: 1.2rem;
-  color: #FF4C00;
-  font-weight: 500;
-  margin-top: 10px;
-}
-
-/* Particle.js */
-#particles-js {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-/* Game Section (Tic-Tac-Toe) */
-#tic-tac-toe {
-  display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(3, 100px);
-  gap: 5px;
-}
-
-#tic-tac-toe div {
-  width: 100px;
-  height: 100px;
-  background: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
+  background: #333;
   color: white;
-  cursor: pointer;
+  padding: 20px 0;
+  text-align: center;
 }
 
-#tic-tac-toe div:hover {
-  background: #444;
+header .logo {
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-/* Grocery Shopping */
-.grocery-list, .cart {
-  margin-top: 20px;
-}
-
-.cart ul {
+header nav ul {
   list-style-type: none;
   padding: 0;
 }
 
-button#checkout {
-  padding: 10px 20px;
-  background-color: #FF4C00;
-  border: none;
+header nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+header nav ul li a {
   color: white;
-  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-button#checkout:hover {
-  background-color: #FF6600;
+section {
+  padding: 40px 20px;
 }
 
-/* Love Section */
-#love-declaration {
-  text-align: center;
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #FF4C00;
+}
+
+/* Hero Section */
+#hero {
   background: #FF4C00;
-  padding: 50px;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.cta-btn {
+  padding: 15px 30px;
+  background: #333;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
   margin-top: 20px;
 }
 
-.love-title {
-  font-size: 3rem;
-  color: #fff;
+/* Service Section */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
-.love-message {
-  font-size: 1.2rem;
-  color: #fff;
-  margin-top: 10px;
-}
-
-#hearts {
-  margin-top: 30px;
-}
-
-/* Social Sharing */
-button.social-btn {
-  padding: 10px 20px;
-  background-color: #00CFFF;
-  border: none;
-  color: white;
-  cursor: pointer;
-  margin: 5px;
-}
-
-button.social-btn:hover {
-  background-color: #00B3D1;
-}
-
-/* Photo Gallery */
-#photo-gallery {
-  margin-top: 50px;
+.service {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-#file-upload {
-  padding: 10px;
-  background-color: #222;
-  border: none;
+button {
+  background-color: #FF4C00;
   color: white;
+  padding: 10px;
+  border: none;
   cursor: pointer;
 }
 
-#gallery img {
-  width: 100px;
-  margin: 10px;
-  border-radius: 10px;
+button:hover {
+  background-color: #333;
+}
+
+/* Project Cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* Testimonials */
+.testimonials-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+}
+
+/* Form & Map */
+#contact-form input, #contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button[type="submit"] {
+  background-color: #FF4C00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#map {
+  height: 400px;
+  margin-top: 20px;
+}
+
+/* Charts */
+canvas {
+  width: 100%;
+  height: 300px;
 }
