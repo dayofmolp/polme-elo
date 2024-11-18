@@ -7,6 +7,7 @@
   <title>Polme Elo</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script> <!-- Particle.js -->
 </head>
 <body>
   <!-- Main Header with Branding -->
@@ -15,7 +16,11 @@
       <span class="logo-text">Polme</span>
       <span class="logo-highlight">Elo</span>
     </div>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button> <!-- Dark Mode Toggle -->
   </header>
+
+  <!-- Particle Background -->
+  <div id="particles-js"></div> 
 
   <!-- Spotify Embed Section -->
   <section id="spotify" class="spotify">
@@ -50,6 +55,24 @@
       <div id="weather-info">
         <!-- Weather info will be injected here -->
       </div>
+    </div>
+  </section>
+
+  <!-- Instagram Feed Section -->
+  <section id="instagram" class="instagram">
+    <div class="section-header">
+      <h2>Live Instagram Feed</h2>
+      <p>Stay connected with Polme Elo on Instagram!</p>
+    </div>
+    <div id="instaFeed" class="insta-feed">
+      <!-- Instagram posts will go here -->
+    </div>
+  </section>
+
+  <!-- 3D Logo Effect -->
+  <section id="interactive-logo" class="interactive-logo">
+    <div class="logo-3d-container">
+      <h2>Polme Elo</h2>
     </div>
   </section>
 
