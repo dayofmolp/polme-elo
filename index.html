@@ -3,96 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Polme Elo - The Everything Page. Games, APIs, Love, Shopping, and more!">
-  <title>Polme Elo</title>
+  <meta name="description" content="Polme Elo - Professional Web Development Services in Cape Town">
+  <title>Polme Elo - Web Development in Cape Town</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/p5.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- For alerts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For Graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- For Alerts -->
 </head>
 <body>
-  <!-- Main Header with Branding -->
+
+  <!-- Header Section -->
   <header>
-    <div class="logo" id="logo">
-      <span class="logo-text">Polme</span>
-      <span class="logo-highlight">Elo</span>
-    </div>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button> <!-- Dark Mode Toggle -->
-    <div class="slogan">Polme n Rome Elo Aviva</div>
+    <div class="logo">Polme Elo</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Particle Background -->
-  <div id="particles-js"></div> 
-
-  <!-- Interactive Games Section (Tic-Tac-Toe) -->
-  <section id="games" class="games">
-    <div class="section-header">
-      <h2>Play a Game</h2>
-      <p>Take a break and play a quick game of Tic-Tac-Toe!</p>
-    </div>
-    <div id="tic-tac-toe" class="tic-tac-toe">
-      <!-- Tic-Tac-Toe board will go here -->
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Welcome to Polme Elo</h1>
+      <p>Your trusted partner for custom web development solutions in Cape Town.</p>
+      <button class="cta-btn">Get Started</button>
     </div>
   </section>
 
-  <!-- Grocery Shopping API -->
-  <section id="grocery-shopping" class="grocery-shopping">
-    <div class="section-header">
-      <h2>Grocery Shopping</h2>
-      <p>Get your groceries delivered quickly!</p>
-    </div>
-    <div class="grocery-list">
-      <!-- Grocery list will be dynamic -->
-    </div>
-    <div class="cart">
-      <h3>Your Cart</h3>
-      <ul id="cart-list"></ul>
-      <button id="checkout">Checkout</button>
+  <!-- About Us Section -->
+  <section id="about" class="section">
+    <h2>About Us</h2>
+    <p>We are a team of passionate developers offering top-tier web development services in Cape Town. Our mission is to provide innovative, user-friendly, and scalable solutions to businesses of all sizes.</p>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service">
+        <h3>Web Development</h3>
+        <p>Custom websites, eCommerce stores, and more. We build with the latest technologies.</p>
+        <button onclick="openServiceDetails('web-dev')">Learn More</button>
+      </div>
+      <div class="service">
+        <h3>App Development</h3>
+        <p>We create high-quality mobile apps for iOS and Android.</p>
+        <button onclick="openServiceDetails('app-dev')">Learn More</button>
+      </div>
+      <div class="service">
+        <h3>UI/UX Design</h3>
+        <p>User-centered designs that delight and engage users.</p>
+        <button onclick="openServiceDetails('ui-ux')">Learn More</button>
+      </div>
+      <div class="service">
+        <h3>SEO & Marketing</h3>
+        <p>Boost your online visibility with our SEO and digital marketing services.</p>
+        <button onclick="openServiceDetails('seo-marketing')">Learn More</button>
+      </div>
     </div>
   </section>
 
-  <!-- Uber Ride API Section -->
-  <section id="uber-rides" class="uber-rides">
-    <div class="section-header">
-      <h2>Get a Ride</h2>
-      <p>Book your Uber ride in just a few clicks!</p>
-    </div>
-    <div id="uber-info">
-      <!-- Mock Uber ride integration -->
-      <button onclick="bookUberRide()">Book Uber Ride</button>
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <h2>Our Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Project 1</h3>
+        <p>A responsive website for a local business in Cape Town.</p>
+        <button onclick="viewProjectDetails(1)">View Project</button>
+      </div>
+      <div class="project-card">
+        <h3>Project 2</h3>
+        <p>An eCommerce store for a fashion brand.</p>
+        <button onclick="viewProjectDetails(2)">View Project</button>
+      </div>
+      <div class="project-card">
+        <h3>Project 3</h3>
+        <p>A mobile app to streamline customer interactions.</p>
+        <button onclick="viewProjectDetails(3)">View Project</button>
+      </div>
     </div>
   </section>
 
-  <!-- Love Declaration for Gauta -->
-  <section id="love-declaration" class="love-declaration">
-    <div class="love-header">
-      <h2 class="love-title">To My Dearest Gauta</h2>
-      <p class="love-message">My love for you is infinite, just like the stars in the sky. You are my everything.</p>
+  <!-- Graphs Section -->
+  <section id="stats" class="section">
+    <h2>Our Success in Numbers</h2>
+    <div class="charts-container">
+      <canvas id="revenue-chart"></canvas>
+      <canvas id="skills-chart"></canvas>
     </div>
-    <div class="hearts" id="hearts"></div>
   </section>
 
-  <!-- Social Sharing Section -->
-  <section id="social-sharing" class="social-sharing">
-    <div class="section-header">
-      <h2>Share the Love</h2>
-      <p>Share Polme Elo with your friends!</p>
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonials-slider">
+      <div class="testimonial">
+        <p>"Polme Elo helped us build an amazing website. Highly recommend their team!"</p>
+        <p>- John Doe, CEO of XYZ Corp</p>
+      </div>
+      <div class="testimonial">
+        <p>"Their team understood our vision and brought it to life beyond expectations."</p>
+        <p>- Sarah Lee, Founder of GreenTech</p>
+      </div>
     </div>
-    <button class="social-btn">Share on Facebook</button>
-    <button class="social-btn">Share on Twitter</button>
-    <button class="social-btn">Share on Instagram</button>
   </section>
 
-  <!-- Photo Gallery Section -->
-  <section id="photo-gallery" class="photo-gallery">
-    <div class="section-header">
-      <h2>Photo Gallery</h2>
-      <p>Upload your favorite photos here!</p>
-    </div>
-    <input type="file" id="file-upload" accept="image/*">
-    <div id="gallery"></div>
+  <!-- Contact Us Section -->
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="map"></div> <!-- Google Map Placeholder -->
   </section>
+
+  <footer>
+    <p>&copy; 2024 Polme Elo. All rights reserved.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
