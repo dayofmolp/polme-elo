@@ -1,165 +1,117 @@
-/* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* General Styles */
 body {
   font-family: 'Roboto', sans-serif;
-  color: #fff;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  overflow-x: hidden;
-}
-
-h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 1px;
-}
-
-/* Header */
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  background: #1e3c72;
-  position: relative;
-}
-
-.header-content {
-  z-index: 10;
-}
-
-.header h1 {
-  font-size: 3rem;
-  color: #fff;
-  margin-bottom: 10px;
-  animation: fadeIn 1s ease-out;
-}
-
-.header .tagline {
-  font-size: 1.5rem;
-  color: #ddd;
-  margin-bottom: 20px;
-}
-
-.cta-button {
-  background: #FF4C00;
-  color: #fff;
-  padding: 15px 25px;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  animation: bounceIn 2s ease-in-out infinite;
-}
-
-.cta-button:hover {
-  background: #FF5F00;
-}
-
-/* Features Section */
-.features {
+  margin: 0;
+  padding: 0;
   background: #111;
+  color: white;
+}
+
+/* Header & Logo */
+header {
+  padding: 20px 0;
+  background: #111;
+  text-align: center;
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #FF4C00;
+}
+
+.logo-highlight {
+  color: #00CFFF;
+}
+
+/* Sections */
+section {
   padding: 50px 20px;
   text-align: center;
-  animation: fadeIn 1s ease-out;
 }
 
-.features h2 {
+h2 {
   font-size: 2.5rem;
   color: #FF4C00;
   margin-bottom: 20px;
 }
 
-.features p {
+p {
   font-size: 1.1rem;
   color: #bbb;
   margin-bottom: 40px;
 }
 
-.feature-cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+/* Spotify Embed */
+.spotify {
+  background: #222;
+  animation: fadeIn 1s ease-out;
 }
 
-.card {
+.spotify-player {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #333;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Snake Game */
+.game {
+  background: #222;
+  animation: fadeIn 1s ease-out;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button.cta-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #FF4C00;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.cta-button:hover {
+  background-color: #FF6A00;
+}
+
+canvas {
+  background: #111;
+  border: 2px solid #FF4C00;
+}
+
+/* Weather Widget */
+.weather {
+  background: #111;
+  padding: 50px 20px;
+  animation: fadeIn 1s ease-out;
+}
+
+.weather-container {
+  max-width: 600px;
+  margin: 0 auto;
   background: #222;
   padding: 30px;
   border-radius: 10px;
-  width: 250px;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+#weather-info {
+  color: #fff;
+  font-size: 1.2rem;
 }
 
-.card h3 {
-  font-size: 1.8rem;
-  color: #FF4C00;
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: #bbb;
-}
-
-/* Footer */
-.footer {
-  background: #222;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.footer-content p {
-  color: #bbb;
-  font-size: 0.9rem;
-}
-
-.social-links {
-  margin-top: 10px;
-}
-
-.social-links a {
-  color: #bbb;
-  margin: 0 10px;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-.social-links a:hover {
-  color: #FF4C00;
-  transition: color 0.3s ease;
-}
-
-/* Animations */
+/* Animation */
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bounceIn {
-  0% {
-    transform: translateY(-10px);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(-10px);
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
