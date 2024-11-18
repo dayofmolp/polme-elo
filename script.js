@@ -1,117 +1,93 @@
-/* General Styles */
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #111;
-  color: white;
+// Snake Game Code
+let snake, food, score, gameInterval;
+
+function startSnakeGame() {
+  const canvas = document.getElementById('snakeGame');
+  const ctx = canvas.getContext('2d');
+  const canvasSize = 300;
+  const scale = 10;
+  const totalCells = canvasSize / scale;
+
+  snake = [{ x: 5, y: 5 }];
+  food = { x: Math.floor(Math.random() * totalCells), y: Math.floor(Math.random() * totalCells) };
+  score = 0;
+
+  document.addEventListener('keydown', changeDirection);
+  gameInterval = setInterval(updateGame, 100);
+
+  function updateGame() {
+    moveSnake();
+    if (checkCollision()) {
+      clearInterval(gameInterval);
+      alert('Game Over! Your score: ' + score);
+      return;
+    }
+
+    if (snake[0].x === food.x && snake[0].y === food.y) {
+      score++;
+      food = { x: Math.floor(Math.random() * totalCells), y: Math.floor(Math.random() * totalCells) };
+    }
+
+    drawCanvas();
+  }
+
+  function moveSnake() {
+    const head = { ...snake[0] };
+
+    if (direction === 'LEFT') head.x--;
+    if (direction === 'RIGHT') head.x++;
+    if (direction === 'UP') head.y--;
+    if (direction === 'DOWN') head.y++;
+
+    snake.unshift(head);
+    snake.pop();
+  }
+
+  function drawCanvas() {
+    ctx.clearRect(0, 0, canvasSize, canvasSize);
+    ctx.fillStyle = 'lime';
+    snake.forEach(part => ctx.fillRect(part.x * scale, part.y * scale, scale, scale));
+    ctx.fillStyle = 'red';
+    ctx.fillRect(food.x * scale, food.y * scale, scale, scale);
+  }
+
+  function checkCollision() {
+    const head = snake[0];
+    if (head.x < 0 || head.x >= totalCells || head.y < 0 || head.y >= totalCells) return true;
+    for (let i = 1; i < snake.length; i++) {
+      if (head.x === snake[i].x && head.y === snake[i].y) return true;
+    }
+    return false;
+  }
+
+  let direction = 'RIGHT';
+  function changeDirection(event) {
+    if (event.key === 'ArrowUp' && direction !== 'DOWN') direction = 'UP';
+    if (event.key === 'ArrowDown' && direction !== 'UP') direction = 'DOWN';
+    if (event.key === 'ArrowLeft' && direction !== 'RIGHT') direction = 'LEFT';
+    if (event.key === 'ArrowRight' && direction !== 'LEFT') direction = 'RIGHT';
+  }
 }
 
-/* Header & Logo */
-header {
-  padding: 20px 0;
-  background: #111;
-  text-align: center;
+// Weather Widget (using OpenWeather API)
+const apiKey = 'your-api-key'; // Replace with your own OpenWeather API key
+const weatherContainer = document.getElementById('weather-info');
+
+async function getWeather() {
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Cape%20Town&appid=${apiKey}&units=metric`);
+  const data = await response.json();
+
+  if (data.cod === 200) {
+    const weatherInfo = `
+      <p><strong>${data.name}</strong> - ${data.weather[0].description}</p>
+      <p><strong>Temperature:</strong> ${data.main.temp}°C</p>
+      <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
+      <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+    `;
+    weatherContainer.innerHTML = weatherInfo;
+  } else {
+    weatherContainer.innerHTML = `<p>Could not fetch weather data.</p>`;
+  }
 }
 
-.logo {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #FF4C00;
-}
-
-.logo-highlight {
-  color: #00CFFF;
-}
-
-/* Sections */
-section {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 2.5rem;
-  color: #FF4C00;
-  margin-bottom: 20px;
-}
-
-p {
-  font-size: 1.1rem;
-  color: #bbb;
-  margin-bottom: 40px;
-}
-
-/* Spotify Embed */
-.spotify {
-  background: #222;
-  animation: fadeIn 1s ease-out;
-}
-
-.spotify-player {
-  max-width: 900px;
-  margin: 0 auto;
-  background: #333;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-/* Snake Game */
-.game {
-  background: #222;
-  animation: fadeIn 1s ease-out;
-}
-
-.game-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-button.cta-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #FF4C00;
-  color: white;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button.cta-button:hover {
-  background-color: #FF6A00;
-}
-
-canvas {
-  background: #111;
-  border: 2px solid #FF4C00;
-}
-
-/* Weather Widget */
-.weather {
-  background: #111;
-  padding: 50px 20px;
-  animation: fadeIn 1s ease-out;
-}
-
-.weather-container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #222;
-  padding: 30px;
-  border-radius: 10px;
-}
-
-#weather-info {
-  color: #fff;
-  font-size: 1.2rem;
-}
-
-/* Animation */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+getWeather();
