@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Polme Elo - Interactive web experiences with music, games, and more">
+  <meta name="description" content="Polme Elo - The Everything Page. Games, APIs, Love, Shopping, and more!">
   <title>Polme Elo</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script> <!-- Particle.js -->
-  <script src="https://cdn.jsdelivr.net/npm/p5.js"></script> <!-- Audio Visualizer -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- For alerts -->
 </head>
 <body>
   <!-- Main Header with Branding -->
@@ -24,37 +25,73 @@
   <!-- Particle Background -->
   <div id="particles-js"></div> 
 
-  <!-- Spotify Embed Section -->
-  <section id="spotify" class="spotify">
+  <!-- Interactive Games Section (Tic-Tac-Toe) -->
+  <section id="games" class="games">
     <div class="section-header">
-      <h2>My Favorite Tunes</h2>
-      <p>Enjoy some music while you browse!</p>
+      <h2>Play a Game</h2>
+      <p>Take a break and play a quick game of Tic-Tac-Toe!</p>
     </div>
-    <div class="spotify-player">
-      <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    </div>
-    <div id="visualizer-container" class="visualizer-container">
-      <canvas id="visualizer"></canvas>
+    <div id="tic-tac-toe" class="tic-tac-toe">
+      <!-- Tic-Tac-Toe board will go here -->
     </div>
   </section>
 
-  <!-- Scroll Parallax Section -->
-  <section id="parallax-section" class="parallax-section">
-    <h2>Welcome to the Future</h2>
-    <p>Scroll to explore our features</p>
+  <!-- Grocery Shopping API -->
+  <section id="grocery-shopping" class="grocery-shopping">
+    <div class="section-header">
+      <h2>Grocery Shopping</h2>
+      <p>Get your groceries delivered quickly!</p>
+    </div>
+    <div class="grocery-list">
+      <!-- Grocery list will be dynamic -->
+    </div>
+    <div class="cart">
+      <h3>Your Cart</h3>
+      <ul id="cart-list"></ul>
+      <button id="checkout">Checkout</button>
+    </div>
   </section>
 
-  <!-- Interactive Form Section -->
-  <section id="contact" class="contact">
+  <!-- Uber Ride API Section -->
+  <section id="uber-rides" class="uber-rides">
     <div class="section-header">
-      <h2>Get in Touch</h2>
-      <p>Leave us a message and let's connect!</p>
+      <h2>Get a Ride</h2>
+      <p>Book your Uber ride in just a few clicks!</p>
     </div>
-    <form id="contact-form">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <textarea id="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <div id="uber-info">
+      <!-- Mock Uber ride integration -->
+      <button onclick="bookUberRide()">Book Uber Ride</button>
+    </div>
+  </section>
+
+  <!-- Love Declaration for Gauta -->
+  <section id="love-declaration" class="love-declaration">
+    <div class="love-header">
+      <h2 class="love-title">To My Dearest Gauta</h2>
+      <p class="love-message">My love for you is infinite, just like the stars in the sky. You are my everything.</p>
+    </div>
+    <div class="hearts" id="hearts"></div>
+  </section>
+
+  <!-- Social Sharing Section -->
+  <section id="social-sharing" class="social-sharing">
+    <div class="section-header">
+      <h2>Share the Love</h2>
+      <p>Share Polme Elo with your friends!</p>
+    </div>
+    <button class="social-btn">Share on Facebook</button>
+    <button class="social-btn">Share on Twitter</button>
+    <button class="social-btn">Share on Instagram</button>
+  </section>
+
+  <!-- Photo Gallery Section -->
+  <section id="photo-gallery" class="photo-gallery">
+    <div class="section-header">
+      <h2>Photo Gallery</h2>
+      <p>Upload your favorite photos here!</p>
+    </div>
+    <input type="file" id="file-upload" accept="image/*">
+    <div id="gallery"></div>
   </section>
 
   <script src="script.js"></script>
