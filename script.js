@@ -1,69 +1,21 @@
-// Google Map Integration
-function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -33.9249, lng: 18.4241 }, // Cape Town
-    zoom: 12,
-  });
+// YouTube API Integration - Display Latest Videos
+function loadYouTubeVideos() {
+  const apiKey = 'YOUR_YOUTUBE_API_KEY'; // Replace with your YouTube API key
+  const channelId = 'YOUR_CHANNEL_ID'; // Replace with your YouTube channel ID
+  const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const videosContainer = document.getElementById('youtube-videos');
+      data.items.forEach(item => {
+        const video = document.createElement('iframe');
+        video.src = `https://www.youtube.com/embed/${item.id.videoId}`;
+        videosContainer.appendChild(video);
+      });
+    })
+    .catch(error => console.error('Error loading YouTube videos:', error));
 }
 
-// Chart.js - Revenue Graph
-const ctx = document.getElementById("revenue-chart").getContext("2d");
-const revenueChart = new Chart(ctx, {
-  type: "line",
-  data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets: [{
-      label: "Revenue",
-      data: [3000, 3500, 4000, 5000, 6500, 7000],
-      borderColor: "#FF4C00",
-      fill: false,
-    }]
-  }
-});
-
-// Chart.js - Skill Level Graph
-const skillCtx = document.getElementById("skills-chart").getContext("2d");
-const skillsChart = new Chart(skillCtx, {
-  type: "bar",
-  data: {
-    labels: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
-    datasets: [{
-      label: "Skill Level",
-      data: [90, 85, 80, 70, 75],
-      backgroundColor: "#FF4C00",
-      borderRadius: 8,
-    }]
-  }
-});
-
-// SweetAlert - Service Details
-function openServiceDetails(service) {
-  let title = "";
-  let message = "";
-
-  switch(service) {
-    case "web-dev":
-      title = "Web Development";
-      message = "We offer custom web development using the latest technologies.";
-      break;
-    case "app-dev":
-      title = "App Development";
-      message = "High-quality iOS & Android apps built to meet your business needs.";
-      break;
-    case "ui-ux":
-      title = "UI/UX Design";
-      message = "User-centered design that engages and delights your audience.";
-      break;
-    case "seo-marketing":
-      title = "SEO & Marketing";
-      message = "Optimize your site for search engines and increase your digital presence.";
-      break;
-  }
-
-  Swal.fire({
-    title: title,
-    text: message,
-    icon: "info",
-    confirmButtonText: "Close",
-  });
-}
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', loadYouTubeVideos);
