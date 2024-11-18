@@ -13,6 +13,7 @@ header {
   background: #111;
   text-align: center;
   position: relative;
+  z-index: 10;
 }
 
 .logo {
@@ -21,10 +22,22 @@ header {
   color: #FF4C00;
   cursor: pointer;
   display: inline-block;
+  position: relative;
+}
+
+.logo-text {
+  color: #FF4C00;
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .logo-highlight {
   color: #00CFFF;
+}
+
+.logo:hover .logo-text {
+  color: #00CFFF;
+  transform: scale(1.1);
 }
 
 button.theme-toggle {
@@ -43,6 +56,15 @@ button.theme-toggle:hover {
   color: #00CFFF;
 }
 
+.slogan {
+  font-size: 1.2rem;
+  color: #FF4C00;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  animation: fadeIn 3s ease-out;
+}
+
 /* Particle.js */
 #particles-js {
   position: absolute;
@@ -58,6 +80,7 @@ button.theme-toggle:hover {
 section {
   padding: 50px 20px;
   text-align: center;
+  position: relative;
 }
 
 h2 {
@@ -72,12 +95,6 @@ p {
   margin-bottom: 40px;
 }
 
-/* Spotify Embed */
-.spotify {
-  background: #222;
-  animation: fadeIn 1s ease-out;
-}
-
 .spotify-player {
   max-width: 900px;
   margin: 0 auto;
@@ -86,98 +103,75 @@ p {
   padding: 20px;
 }
 
-/* Snake Game */
-.game {
-  background: #222;
-  animation: fadeIn 1s ease-out;
-}
-
-.game-container {
+.visualizer-container {
+  width: 100%;
+  height: 150px;
+  margin-top: 20px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
-button.cta-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #FF4C00;
+#visualizer {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Parallax Section */
+.parallax-section {
+  background-image: url('https://source.unsplash.com/random');
+  background-size: cover;
+  background-attachment: fixed;
   color: white;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
 }
 
-button.cta-button:hover {
-  background-color: #FF6A00;
+.parallax-section h2 {
+  font-size: 3rem;
+  color: #FF4C00;
 }
 
-canvas {
-  background: #111;
-  border: 2px solid #FF4C00;
-}
-
-/* Weather Widget */
-.weather {
-  background: #111;
+/* Contact Form */
+.contact {
+  background: #222;
   padding: 50px 20px;
+  text-align: center;
   animation: fadeIn 1s ease-out;
 }
 
-.weather-container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #222;
-  padding: 30px;
-  border-radius: 10px;
-}
-
-#weather-info {
-  color: #fff;
-  font-size: 1.2rem;
-}
-
-/* Instagram Feed */
-.insta-feed {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.insta-feed img {
-  width: 45%;
-  height: 200px;
-  object-fit: cover;
+#contact-form input, #contact-form textarea {
+  width: 80%;
+  padding: 15px;
+  margin: 10px 0;
+  background: #333;
+  border: none;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  color: #fff;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.insta-feed img:hover {
-  transform: scale(1.1);
+#contact-form input:focus, #contact-form textarea:focus {
+  background-color: #00CFFF;
+  outline: none;
 }
 
-/* 3D Logo Effect */
-.interactive-logo {
-  margin-top: 50px;
-  text-align: center;
+#contact-form button {
+  padding: 15px 30px;
+  background-color: #FF4C00;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: white;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.logo-3d-container h2 {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #FF4C00;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out;
-}
-
-.logo-3d-container h2:hover {
-  transform: rotateY(360deg);
+#contact-form button:hover {
+  background-color: #00CFFF;
 }
 
 /* Dark Mode */
